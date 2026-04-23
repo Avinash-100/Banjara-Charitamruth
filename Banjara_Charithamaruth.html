@@ -1153,6 +1153,70 @@
             0% { transform: translateY(0); }
             100% { transform: translateY(-50%); }
         }
+
+        @keyframes marqueeHorizontal {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .horizontal-marquee-container {
+            overflow: hidden;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(201, 151, 58, 0.2);
+            padding: 1rem 0;
+            width: 100%;
+        }
+
+        .horizontal-marquee {
+            display: flex;
+            white-space: nowrap;
+            animation: marqueeHorizontal 25s linear infinite;
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 0.85rem;
+            color: var(--gold);
+            letter-spacing: 0.15em;
+        }
+
+        /* ── CUSTOM MEDIA ── */
+        .small-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .book-flip-container {
+            position: relative;
+            width: 250px;
+            height: 350px;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+            margin: 0 auto;
+        }
+
+        .book-visual:hover .book-flip-container {
+            transform: rotateY(180deg);
+        }
+
+        .book-flip-front, .book-flip-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            object-fit: cover;
+        }
+
+        .book-flip-back {
+            transform: rotateY(180deg);
+        }
+            font-size: 0.85rem;
+            color: var(--gold);
+            letter-spacing: 0.15em;
+        }
         
         @media (max-width: 900px) {
             .vertical-marquee-container {
@@ -1249,9 +1313,9 @@
         </div>
 
         <div class="hero-right">
-            <div class="hero-image-frame tilt-element">
-                <img src="Gemini_Generated_Image_5m7b6r5m7b6r5m7b.png" alt="Banjara Culture" class="hero-img tilt-inner" style="border-radius: 4px;">
-                <div class="image-caption tilt-inner" style="transform: translateZ(40px);">Faces of Banjara Culture</div>
+            <div class="hero-image-frame tilt-element" style="border: none; background: none; box-shadow: none;">
+                <video src="welcome video.mp4" autoplay loop muted playsinline class="hero-img tilt-inner" style="border-radius: 8px; width: 100%; height: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5);"></video>
+                <div class="image-caption tilt-inner" style="transform: translateZ(40px);">Welcome to Banjara Culture</div>
             </div>
         </div>
 
@@ -1264,11 +1328,10 @@
     <!-- ABOUT BOOK -->
     <section class="about-book" id="about">
         <div class="container">
-            <div class="book-visual reveal">
-                <div class="book-cover">
-                    <div class="book-cover-title">Banjara<br />Charithaamruth</div>
-                    <div class="book-cover-ornament">✦ ❖ ✦</div>
-                    <div class="book-cover-author">Santosh Rathod</div>
+            <div class="book-visual reveal tilt-element" style="perspective: 1000px;">
+                <div class="book-flip-container tilt-inner">
+                    <img src="front book image.jpeg" alt="Front Cover" class="book-flip-front">
+                    <img src="backside image book.jpeg" alt="Back Cover" class="book-flip-back">
                 </div>
             </div>
             <div class="book-text reveal">
@@ -1348,6 +1411,9 @@
                     </p>
                 </div>
                 <div class="history-sidebar">
+                    <div class="reveal tilt-element" style="margin-bottom: 2.5rem; text-align: center;">
+                        <img src="Ashwini didi animated image.png" alt="Ashwini Didi" class="small-img tilt-inner" style="max-width: 250px;">
+                    </div>
                     <div class="fact-card reveal">
                         <h4>Ancient Roots</h4>
                         <p>Believed to have originated in the Rajputana region, with warrior-clan heritage and royal
@@ -1428,7 +1494,7 @@
         <div class="container">
             <div class="author-inner">
                 <div class="author-photo-wrap reveal tilt-element">
-                    <img src="LK Shantosh In.jpeg" alt="Santosh Rathod" class="author-photo tilt-inner">
+                    <img src="Author image.jpeg" alt="Santosh Rathod" class="author-photo tilt-inner" style="object-position: top;">
                     <div class="author-award tilt-inner" style="transform: translateZ(50px);">
                         ಸಿರಿಗನ್ನಡ<br />ವಜ್ರಪ್ರದೀಪ<br />Award
                     </div>
@@ -1453,6 +1519,10 @@
                         for.
                     </p>
                     <div class="author-badge">✦ Sirigannada Vajradeep Awardee</div>
+                    
+                    <div style="margin-top: 3rem; text-align: center;" class="reveal tilt-element">
+                        <img src="santosh mummy.jpeg" alt="Santosh Mummy" class="small-img tilt-inner" style="max-width: 220px; border-radius: 8px;">
+                    </div>
                 </div>
             </div>
         </div>
@@ -1478,6 +1548,22 @@
         <div class="footer-sub">by Santosh Rathod · ಸಂತೋಷ್ ರಾಠೋಡ್</div>
         <div class="footer-divider"></div>
         <div class="footer-copy">© 2026 Banjara Charithaamruth · Preserving Culture, Inspiring Generations</div>
+        
+        <!-- Horizontal Marquee -->
+        <div class="horizontal-marquee-container">
+            <div class="horizontal-marquee">
+                <!-- First Set -->
+                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+                <!-- Second Set (Duplicate for seamless loop) -->
+                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+            </div>
+        </div>
     </footer>
 
     <script>
