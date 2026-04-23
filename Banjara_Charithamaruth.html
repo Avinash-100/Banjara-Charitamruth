@@ -1154,27 +1154,94 @@
             100% { transform: translateY(-50%); }
         }
 
-        @keyframes marqueeHorizontal {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        
-        .horizontal-marquee-container {
-            overflow: hidden;
-            margin-top: 2rem;
-            border-top: 1px solid rgba(201, 151, 58, 0.2);
-            padding: 1rem 0;
+        /* ── MODAL POPUP ── */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100vh;
+            background: rgba(10, 3, 5, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .modal-content {
+            background: linear-gradient(145deg, rgba(30, 12, 18, 0.9), rgba(15, 5, 8, 0.95));
+            border: 1px solid rgba(201, 151, 58, 0.3);
+            border-radius: 12px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .modal-close:hover {
+            transform: rotate(90deg);
+        }
+        .modal-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        .modal-title {
+            font-family: 'Cinzel Decorative', cursive;
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .modal-desc {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--cream);
         }
 
-        .horizontal-marquee {
-            display: flex;
-            white-space: nowrap;
-            animation: marqueeHorizontal 25s linear infinite;
-            font-family: 'Cinzel Decorative', cursive;
-            font-size: 0.85rem;
+        /* Clickable Card Hover Indicator */
+        .clickable-card {
+            cursor: pointer;
+        }
+        .clickable-card::after {
+            content: "Click to expand";
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
             color: var(--gold);
-            letter-spacing: 0.15em;
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s;
+            pointer-events: none;
+            white-space: nowrap;
+            letter-spacing: 0.1em;
+        }
+        .clickable-card:hover::after {
+            opacity: 1;
+            bottom: 10px;
         }
 
         /* ── CUSTOM MEDIA ── */
@@ -1412,7 +1479,7 @@
                 </div>
                 <div class="history-sidebar">
                     <div class="reveal tilt-element" style="margin-bottom: 2.5rem; text-align: center;">
-                        <img src="Ashwini didi animated image.png" alt="Ashwini Didi" class="small-img tilt-inner" style="max-width: 250px;">
+                        <img src="Ashwini new image.jpeg" alt="Ashwini Didi" class="small-img tilt-inner" style="max-width: 250px;">
                     </div>
                     <div class="fact-card reveal">
                         <h4>Ancient Roots</h4>
@@ -1520,8 +1587,25 @@
                     </p>
                     <div class="author-badge">✦ Sirigannada Vajradeep Awardee</div>
                     
-                    <div style="margin-top: 3rem; text-align: center;" class="reveal tilt-element">
-                        <img src="santosh mummy.jpeg" alt="Santosh Mummy" class="small-img tilt-inner" style="max-width: 220px; border-radius: 8px;">
+                    <!-- DEDICATION -->
+                    <div class="dedication-block reveal tilt-element" style="margin-top: 4rem; padding: 2.5rem 2rem; background: rgba(30, 12, 18, 0.4); border: 1px solid rgba(201,151,58,0.2); border-radius: 12px; text-align: center; position: relative;">
+                        <img src="santosh mummy.jpeg" alt="Santosh Mummy" class="small-img tilt-inner" style="max-width: 180px; border-radius: 50%; border: 3px solid var(--gold); margin: 0 auto 1.5rem auto;">
+                        <h3 style="font-family: 'Noto Sans Kannada', sans-serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 0.5rem;">ನನ್ನ ಪೂಜ್ಯ ತಾಯಿ ಪುತಳಾಬಾಯಿಯವರಿಗೆ</h3>
+                        <h4 style="font-family: 'Cinzel Decorative', cursive; color: var(--gold-light); font-size: 1rem; margin-bottom: 1.5rem; letter-spacing: 0.1em;">"ಸಮರ್ಪಣೆ" — Dedication</h4>
+                        
+                        <p style="font-style: italic; margin-bottom: 1rem; font-size: 1.05rem; line-height: 1.8; color: #c8a98a;">
+                            "Mother" — even these two simple letters carry a word whose depth is immeasurable. Just hearing it fills the hearts of even the strongest with devotion and reverence. She is the one who brought us into this world, the one who remains even when the world ends.
+                        </p>
+                        <p style="font-style: italic; margin-bottom: 1rem; font-size: 1.05rem; line-height: 1.8; color: #c8a98a;">
+                            Amma... The unconditional love in your eyes, the tender touch of your hands, your face — day and night, you toiled for us, drying your own tears in silence so that ours would never fall. Your boundless love for our future, the selfless dedication that filled your heart — these memories alone are enough to bring tears that wash away all of life's burdens.
+                        </p>
+                        <p style="font-style: italic; margin-bottom: 2rem; font-size: 1.05rem; line-height: 1.8; color: #c8a98a;">
+                            O dear Mother, your memory alone is enough to achieve anything. This first book I have written, I dedicate to your sacred feet. Bless us always.
+                        </p>
+                        <div style="text-align: right; border-top: 1px solid rgba(201,151,58,0.2); padding-top: 1.5rem; margin-top: 1.5rem;">
+                            <strong style="color: var(--gold); display: block; font-family: 'Cinzel Decorative', cursive; font-size: 1.1rem; margin-bottom: 0.3rem;">— Santosh Shivalala Rathod</strong>
+                            <span style="font-size: 0.85rem; color: #9a7a65; letter-spacing: 0.05em; text-transform: uppercase;">(Merchant Navy Officer, Author, Film Director)</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1548,23 +1632,17 @@
         <div class="footer-sub">by Santosh Rathod · ಸಂತೋಷ್ ರಾಠೋಡ್</div>
         <div class="footer-divider"></div>
         <div class="footer-copy">© 2026 Banjara Charithaamruth · Preserving Culture, Inspiring Generations</div>
-        
-        <!-- Horizontal Marquee -->
-        <div class="horizontal-marquee-container">
-            <div class="horizontal-marquee">
-                <!-- First Set -->
-                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
-                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
-                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
-                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
-                <!-- Second Set (Duplicate for seamless loop) -->
-                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
-                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
-                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
-                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
-            </div>
-        </div>
     </footer>
+
+    <!-- POPUP MODAL -->
+    <div class="modal-overlay" id="card-modal">
+        <div class="modal-content tilt-element">
+            <button class="modal-close" id="modal-close">✖</button>
+            <div class="modal-icon tilt-inner" id="modal-icon">✦</div>
+            <h3 class="modal-title tilt-inner" id="modal-title">Title</h3>
+            <div class="modal-desc tilt-inner" id="modal-desc">Description</div>
+        </div>
+    </div>
 
     <script>
         // Scroll reveal
@@ -1619,6 +1697,47 @@
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'perspective(1000px) rotateY(0) rotateX(0) scale3d(1, 1, 1)';
             });
+        });
+
+        // Modal Logic
+        const modal = document.getElementById('card-modal');
+        const modalClose = document.getElementById('modal-close');
+        const modalIcon = document.getElementById('modal-icon');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+
+        document.querySelectorAll('.culture-item, .fact-card, .tradition-card').forEach(card => {
+            card.classList.add('clickable-card');
+            
+            card.addEventListener('click', () => {
+                // Parse content based on card type
+                let title = '', desc = '', icon = '✦';
+                
+                if (card.classList.contains('culture-item')) {
+                    icon = card.querySelector('.culture-icon')?.innerText || '✦';
+                    title = card.querySelector('.culture-title')?.innerText || '';
+                    desc = card.querySelector('.culture-desc')?.innerText || '';
+                } else if (card.classList.contains('fact-card')) {
+                    icon = '📜'; // Default for history
+                    title = card.querySelector('h4')?.innerText || '';
+                    desc = card.querySelector('p')?.innerText || '';
+                } else if (card.classList.contains('tradition-card')) {
+                    icon = card.querySelector('.tradition-emoji')?.innerText || '✦';
+                    title = card.querySelector('h3')?.innerText || '';
+                    desc = card.querySelector('p')?.innerText || '';
+                }
+                
+                modalIcon.innerText = icon;
+                modalTitle.innerText = title;
+                modalDesc.innerText = desc;
+                
+                modal.classList.add('active');
+            });
+        });
+
+        modalClose.addEventListener('click', () => modal.classList.remove('active'));
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('active');
         });
     </script>
 </body>
