@@ -1119,10 +1119,67 @@
                 grid-template-columns: 1fr 1fr;
             }
         }
+
+        /* ── VERTICAL MARQUEE ── */
+        .vertical-marquee-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 35px;
+            height: 100vh;
+            background: rgba(17, 6, 8, 0.9);
+            border-left: 1px solid rgba(201, 151, 58, 0.3);
+            z-index: 1000;
+            overflow: hidden;
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+        }
+
+        .marquee-content {
+            display: flex;
+            flex-direction: column;
+            white-space: nowrap;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 0.8rem;
+            color: rgba(201, 151, 58, 0.8);
+            letter-spacing: 0.15em;
+            animation: marqueeScroll 25s linear infinite;
+        }
+
+        @keyframes marqueeScroll {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+        
+        @media (max-width: 900px) {
+            .vertical-marquee-container {
+                width: 25px;
+            }
+            .marquee-content {
+                font-size: 0.65rem;
+            }
+        }
     </style>
 </head>
 
 <body>
+
+    <!-- Vertical Marquee -->
+    <div class="vertical-marquee-container">
+        <div class="marquee-content">
+            <!-- First Set -->
+            Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; 
+            Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; 
+            Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; 
+            <!-- Second Set (Duplicate for seamless loop) -->
+            Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; 
+            Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; 
+            Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; 
+        </div>
+    </div>
 
     <!-- NAV -->
     <nav>
