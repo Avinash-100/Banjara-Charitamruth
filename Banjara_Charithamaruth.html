@@ -1120,38 +1120,28 @@
             }
         }
 
-        /* ── VERTICAL MARQUEE ── */
-        .vertical-marquee-container {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 35px;
-            height: 100vh;
-            background: rgba(17, 6, 8, 0.9);
-            border-left: 1px solid rgba(201, 151, 58, 0.3);
-            z-index: 1000;
+        /* ── HORIZONTAL MARQUEE ── */
+        @keyframes marqueeHorizontal {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .horizontal-marquee-container {
             overflow: hidden;
-            backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(201, 151, 58, 0.2);
+            padding: 1rem 0;
+            width: 100%;
         }
 
-        .marquee-content {
+        .horizontal-marquee {
             display: flex;
-            flex-direction: column;
             white-space: nowrap;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
+            animation: marqueeHorizontal 25s linear infinite;
             font-family: 'Cinzel Decorative', cursive;
-            font-size: 0.8rem;
-            color: rgba(201, 151, 58, 0.8);
+            font-size: 0.85rem;
+            color: var(--gold);
             letter-spacing: 0.15em;
-            animation: marqueeScroll 25s linear infinite;
-        }
-
-        @keyframes marqueeScroll {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-50%); }
         }
 
         /* ── MODAL POPUP ── */
@@ -1280,37 +1270,12 @@
         .book-flip-back {
             transform: rotateY(180deg);
         }
-            font-size: 0.85rem;
-            color: var(--gold);
-            letter-spacing: 0.15em;
-        }
-        
-        @media (max-width: 900px) {
-            .vertical-marquee-container {
-                width: 25px;
-            }
-            .marquee-content {
-                font-size: 0.65rem;
-            }
-        }
+
     </style>
 </head>
 
 <body>
 
-    <!-- Vertical Marquee -->
-    <div class="vertical-marquee-container">
-        <div class="marquee-content">
-            <!-- First Set -->
-            Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; 
-            Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; 
-            Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; 
-            <!-- Second Set (Duplicate for seamless loop) -->
-            Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; 
-            Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; 
-            Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; 
-        </div>
-    </div>
 
     <!-- NAV -->
     <nav>
@@ -1586,27 +1551,31 @@
                         for.
                     </p>
                     <div class="author-badge">✦ Sirigannada Vajradeep Awardee</div>
-                    
-                    <!-- DEDICATION -->
-                    <div class="dedication-block reveal tilt-element" style="margin-top: 4rem; padding: 2.5rem 2rem; background: rgba(30, 12, 18, 0.4); border: 1px solid rgba(201,151,58,0.2); border-radius: 12px; text-align: center; position: relative;">
-                        <img src="santosh mummy.jpeg" alt="Santosh Mummy" class="small-img tilt-inner" style="max-width: 180px; border-radius: 50%; border: 3px solid var(--gold); margin: 0 auto 1.5rem auto;">
-                        <h3 style="font-family: 'Noto Sans Kannada', sans-serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 0.5rem;">ನನ್ನ ಪೂಜ್ಯ ತಾಯಿ ಪುತಳಾಬಾಯಿಯವರಿಗೆ</h3>
-                        <h4 style="font-family: 'Cinzel Decorative', cursive; color: var(--gold-light); font-size: 1rem; margin-bottom: 1.5rem; letter-spacing: 0.1em;">"ಸಮರ್ಪಣೆ" — Dedication</h4>
-                        
-                        <p style="font-style: italic; margin-bottom: 1rem; font-size: 1.05rem; line-height: 1.8; color: #c8a98a;">
-                            "Mother" — even these two simple letters carry a word whose depth is immeasurable. Just hearing it fills the hearts of even the strongest with devotion and reverence. She is the one who brought us into this world, the one who remains even when the world ends.
-                        </p>
-                        <p style="font-style: italic; margin-bottom: 1rem; font-size: 1.05rem; line-height: 1.8; color: #c8a98a;">
-                            Amma... The unconditional love in your eyes, the tender touch of your hands, your face — day and night, you toiled for us, drying your own tears in silence so that ours would never fall. Your boundless love for our future, the selfless dedication that filled your heart — these memories alone are enough to bring tears that wash away all of life's burdens.
-                        </p>
-                        <p style="font-style: italic; margin-bottom: 2rem; font-size: 1.05rem; line-height: 1.8; color: #c8a98a;">
-                            O dear Mother, your memory alone is enough to achieve anything. This first book I have written, I dedicate to your sacred feet. Bless us always.
-                        </p>
-                        <div style="text-align: right; border-top: 1px solid rgba(201,151,58,0.2); padding-top: 1.5rem; margin-top: 1.5rem;">
-                            <strong style="color: var(--gold); display: block; font-family: 'Cinzel Decorative', cursive; font-size: 1.1rem; margin-bottom: 0.3rem;">— Santosh Shivalala Rathod</strong>
-                            <span style="font-size: 0.85rem; color: #9a7a65; letter-spacing: 0.05em; text-transform: uppercase;">(Merchant Navy Officer, Author, Film Director)</span>
-                        </div>
-                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEDICATION SECTION -->
+    <section class="dedication-section" id="dedication">
+        <div class="container" style="max-width: 800px; margin: 0 auto;">
+            <div class="dedication-block reveal tilt-element" style="padding: 3rem 2rem; background: rgba(30, 12, 18, 0.4); border: 1px solid rgba(201,151,58,0.2); border-radius: 12px; text-align: center; position: relative;">
+                <img src="santosh mummy.jpeg" alt="Santosh Mummy" class="small-img tilt-inner" style="max-width: 180px; border-radius: 50%; border: 3px solid var(--gold); margin: 0 auto 1.5rem auto;">
+                <h3 style="font-family: 'Noto Sans Kannada', sans-serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 0.5rem;">ನನ್ನ ಪೂಜ್ಯ ತಾಯಿ ಪುತಳಾಬಾಯಿಯವರಿಗೆ</h3>
+                <h4 style="font-family: 'Cinzel Decorative', cursive; color: var(--gold-light); font-size: 1rem; margin-bottom: 1.5rem; letter-spacing: 0.1em;">"ಸಮರ್ಪಣೆ" — Dedication</h4>
+                
+                <p style="font-style: italic; margin-bottom: 1rem; font-size: 1.05rem; line-height: 1.8; color: #c8a98a;">
+                    "Mother" — even these two simple letters carry a word whose depth is immeasurable. Just hearing it fills the hearts of even the strongest with devotion and reverence. She is the one who brought us into this world, the one who remains even when the world ends.
+                </p>
+                <p style="font-style: italic; margin-bottom: 1rem; font-size: 1.05rem; line-height: 1.8; color: #c8a98a;">
+                    Amma... The unconditional love in your eyes, the tender touch of your hands, your face — day and night, you toiled for us, drying your own tears in silence so that ours would never fall. Your boundless love for our future, the selfless dedication that filled your heart — these memories alone are enough to bring tears that wash away all of life's burdens.
+                </p>
+                <p style="font-style: italic; margin-bottom: 2rem; font-size: 1.05rem; line-height: 1.8; color: #c8a98a;">
+                    O dear Mother, your memory alone is enough to achieve anything. This first book I have written, I dedicate to your sacred feet. Bless us always.
+                </p>
+                <div style="text-align: right; border-top: 1px solid rgba(201,151,58,0.2); padding-top: 1.5rem; margin-top: 1.5rem;">
+                    <strong style="color: var(--gold); display: block; font-family: 'Cinzel Decorative', cursive; font-size: 1.1rem; margin-bottom: 0.3rem;">— Santosh Shivalala Rathod</strong>
+                    <span style="font-size: 0.85rem; color: #9a7a65; letter-spacing: 0.05em; text-transform: uppercase;">(Merchant Navy Officer, Author, Film Director)</span>
                 </div>
             </div>
         </div>
@@ -1632,6 +1601,22 @@
         <div class="footer-sub">by Santosh Rathod · ಸಂತೋಷ್ ರಾಠೋಡ್</div>
         <div class="footer-divider"></div>
         <div class="footer-copy">© 2026 Banjara Charithaamruth · Preserving Culture, Inspiring Generations</div>
+
+        <!-- Horizontal Marquee -->
+        <div class="horizontal-marquee-container">
+            <div class="horizontal-marquee">
+                <!-- First Set -->
+                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+                <!-- Second Set (Duplicate for seamless loop) -->
+                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+                Made with <span style="color: #e74c3c;">❤</span> by Avinash Chavan &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+            </div>
+        </div>
     </footer>
 
     <!-- POPUP MODAL -->
