@@ -970,14 +970,90 @@
             transform: translateY(0);
         }
 
-        /* ── RESPONSIVE ── */
+        /* ── 3D & CULTURAL ENHANCEMENTS ── */
+        .tilt-element {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: transform 0.1s ease-out;
+            will-change: transform;
+        }
+
+        .tilt-inner {
+            transform: translateZ(30px);
+        }
+
+        .hero-bg {
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        /* Mirror Work Pattern */
+        body {
+            background-image: 
+                radial-gradient(circle at 10px 10px, rgba(201, 151, 58, 0.05) 2px, transparent 0),
+                radial-gradient(circle at 20px 20px, rgba(201, 151, 58, 0.03) 2px, transparent 0);
+            background-size: 30px 30px;
+        }
+
+        .tradition-card, .fact-card, .culture-item {
+            background: rgba(30, 12, 18, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(201, 151, 58, 0.25);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            position: relative;
+        }
+
+        /* ── RESPONSIVE & MOBILE NAV ── */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 101;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--gold);
+            transition: all 0.3s;
+        }
+
         @media (max-width: 900px) {
             nav {
                 padding: 1rem 1.5rem;
             }
 
+            .nav-toggle {
+                display: flex;
+            }
+
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background: rgba(26, 10, 14, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+                z-index: 100;
+            }
+
+            .nav-links.nav-open {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
             }
 
             .hero {
@@ -987,14 +1063,31 @@
 
             .hero-left {
                 padding: 7rem 2rem 2rem;
+                text-align: center;
+            }
+            
+            .hero-eyebrow::after {
+                display: none;
+            }
+            .hero-eyebrow {
+                justify-content: center;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .hero-divider {
+                margin: 1.5rem auto;
             }
 
             .hero-right {
                 padding: 2rem;
+                display: flex;
+                justify-content: center;
             }
 
             .hero-image-frame {
-                width: 280px;
+                width: 100%;
+                max-width: 320px;
             }
 
             .about-book .container,
@@ -1033,8 +1126,14 @@
 
     <!-- NAV -->
     <nav>
-        <div class="nav-logo">Banjara Charithaamruth</div>
-        <ul class="nav-links">
+        <div class="nav-logo">
+            <span style="font-size: 1.2rem; margin-right: 6px;">✦</span>
+            Banjara Charithaamruth
+        </div>
+        <button class="nav-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#history">History</a></li>
             <li><a href="#culture">Culture</a></li>
@@ -1093,12 +1192,9 @@
         </div>
 
         <div class="hero-right">
-            <div class="hero-image-frame">
-                <div class="hero-img-placeholder">
-                    <div class="placeholder-icon">🏺</div>
-                    <div class="placeholder-text">Banjara<br />Cultural Heritage</div>
-                </div>
-                <div class="image-caption">Faces of Banjara Culture</div>
+            <div class="hero-image-frame tilt-element">
+                <img src="Gemini_Generated_Image_5m7b6r5m7b6r5m7b.png" alt="Banjara Culture" class="hero-img tilt-inner" style="border-radius: 4px;">
+                <div class="image-caption tilt-inner" style="transform: translateZ(40px);">Faces of Banjara Culture</div>
             </div>
         </div>
 
@@ -1274,10 +1370,9 @@
     <section class="author-section" id="author">
         <div class="container">
             <div class="author-inner">
-                <div class="author-photo-wrap reveal">
-                    <!-- Replace src with your actual author photo -->
-                    <div class="author-photo-placeholder">👤</div>
-                    <div class="author-award">
+                <div class="author-photo-wrap reveal tilt-element">
+                    <img src="LK Shantosh In.jpeg" alt="Santosh Rathod" class="author-photo tilt-inner">
+                    <div class="author-award tilt-inner" style="transform: translateZ(50px);">
                         ಸಿರಿಗನ್ನಡ<br />ವಜ್ರಪ್ರದೀಪ<br />Award
                     </div>
                 </div>
@@ -1341,7 +1436,7 @@
         }, { threshold: 0.1 });
         reveals.forEach(el => observer.observe(el));
 
-        // Smooth nav highlight
+        // Smooth nav highlight & Parallax
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             if (window.scrollY > 80) {
@@ -1349,6 +1444,38 @@
             } else {
                 nav.style.background = 'linear-gradient(to bottom, rgba(26,10,14,0.95), transparent)';
             }
+
+            // Simple parallax for hero background
+            const heroBg = document.querySelector('.hero-bg');
+            if (heroBg) {
+                heroBg.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+            }
+        });
+
+        // Mobile Menu Toggle
+        const navToggle = document.getElementById('mobile-menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-open');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('nav-open');
+            });
+        });
+
+        // 3D Tilt Effect for cards and elements
+        document.querySelectorAll('.tilt-element, .tradition-card, .fact-card, .culture-item, .book-cover').forEach(card => {
+            card.classList.add('tilt-element'); // ensure class is there
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                card.style.transform = `perspective(1000px) rotateY(${x * 15}deg) rotateX(${-y * 15}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateY(0) rotateX(0) scale3d(1, 1, 1)';
+            });
         });
     </script>
 </body>
