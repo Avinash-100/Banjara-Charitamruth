@@ -1077,7 +1077,7 @@
 
         @media (max-width: 900px) {
             nav {
-                padding: 1rem 1.5rem;
+                padding: 0.8rem 1rem;
             }
 
             .nav-toggle {
@@ -1105,7 +1105,8 @@
             }
 
             .nav-links a {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
+                padding: 1rem;
             }
 
             .hero {
@@ -1114,7 +1115,7 @@
             }
 
             .hero-left {
-                padding: 7rem 2rem 2rem;
+                padding: 6rem 1.5rem 2rem;
                 text-align: center;
             }
             
@@ -1123,30 +1124,52 @@
             }
             .hero-eyebrow {
                 justify-content: center;
+                margin-bottom: 1rem;
+                font-size: 0.7rem;
+            }
+            .hero-title {
+                font-size: clamp(1.8rem, 8vw, 2.5rem);
+            }
+            .hero-tagline {
+                font-size: 1rem;
+                margin: 0 auto;
             }
             .hero-actions {
                 justify-content: center;
+                gap: 0.8rem;
+            }
+            .btn-primary, .btn-outline {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.7rem;
             }
             .hero-divider {
-                margin: 1.5rem auto;
+                margin: 1rem auto;
             }
 
             .hero-right {
-                padding: 2rem;
+                padding: 1rem 1.5rem 3rem;
                 display: flex;
                 justify-content: center;
             }
 
             .hero-image-frame {
                 width: 100%;
-                max-width: 320px;
+                max-width: 280px;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
             }
 
             .about-book .container,
             .history-grid,
             .author-inner {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+                gap: 2rem;
             }
 
             .culture-strip .container {
@@ -1155,20 +1178,60 @@
 
             .traditions-grid {
                 grid-template-columns: 1fr 1fr;
+                gap: 1rem;
             }
 
             .container {
-                padding: 0 1.5rem;
+                padding: 0 1rem;
             }
         }
 
         @media (max-width: 600px) {
+            section {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-left {
+                padding-top: 5rem;
+            }
+
             .traditions-grid {
                 grid-template-columns: 1fr;
             }
 
             .culture-strip .container {
                 grid-template-columns: 1fr;
+            }
+
+            .culture-item, .tradition-card, .fact-card, .contact-card {
+                padding: 1.25rem;
+            }
+
+            .tradition-emoji {
+                font-size: 1.8rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .dedication-block {
+                padding: 1.5rem !important;
+            }
+            
+            .dedication-img {
+                max-width: 150px !important;
+            }
+
+            .book-cover {
+                padding: 1.25rem;
             }
         }
 
